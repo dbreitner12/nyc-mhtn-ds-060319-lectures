@@ -12,3 +12,8 @@ def greetings(name):
 
 class Foo:
     pass
+
+
+def hey():
+    print('Hey')
+    
