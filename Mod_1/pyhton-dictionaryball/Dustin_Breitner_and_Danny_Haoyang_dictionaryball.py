@@ -103,3 +103,104 @@ game_dictionary = {'home': {'team_name': 'Brooklyn Nets',
                                             'blocks': 5,
                                             'slam_dunks': 12
                                         }}}}
+
+
+def num_points_scored(name):
+    name = name.title()
+    for home_away in game_dictionary:
+        for player in game_dictionary[home_away]['players']:
+            if player == name:
+                return game_dictionary[home_away]['players'][name]['points']
+        
+def shoe_size(name):
+    name = name.title()
+    for home_away in game_dictionary:
+        for player in game_dictionary[home_away]['players']:
+            if player == name:
+                return game_dictionary[home_away]['players'][name]['shoe']
+ 
+        
+def team_colors(name_of_team):
+    name_of_team = name_of_team.title()
+    for i in game_dictionary:
+        if game_dictionary[i]['team_name'] == name_of_team:
+            return game_dictionary[i]['colors']
+
+def team_names():
+    return [game_dictionary[i]['team_name'] for i in game_dictionary]
+
+def players_numbers(name_of_team):
+    name_of_team = name_of_team.title()
+    list_of_numbers =[]
+    for i in game_dictionary:
+        if game_dictionary[i]['team_name'] == name_of_team:
+            for player in game_dictionary[i]['players']:
+                list_of_numbers.append(game_dictionary[i]['players'][player ['number'])
+            return list_of_numbers
+                                                                     
+def player_stats(name):
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            if x == name:
+                return game_dictionary[i]['players'][name]
+                                                                     
+def big_shoe_rebounds():
+    big_shoes = []
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            big_shoes.append(game_dictionary[i]['players'][x]['shoe'])
+    shoe_big = max(big_shoes)
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            if game_dictionary[i]['players'][x]['shoe'] == shoe_big:
+                return game_dictionary[i]['players'][x]['rebounds']
+                                                                     
+                                                              
+                                                                     
+def most_player_points():
+    most_points = []
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            most_points.append(game_dictionary[i]['players'][x]['points'])
+    leading_scorer = max(most_points)
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            if game_dictionary[i]['players'][x]['points'] == leading_scorer:
+                return x
+                                                                     
+def winning_team():
+    home_team_points = sum([game_dictionary['home']['players'][x]['points'] for x in game_dictionary['home']['players']])
+    away_team_points = sum([game_dictionary['away']['players'][x]['points'] for x in game_dictionary['away']['players']])
+    if home_team_points > away_team_points:
+        return game_dictionary['home']['team_name']
+    else:
+        return game_dictionary['away']['team_name']
+                                                                     
+                                                                     
+def player_with_longest_name():
+    names_of_players = []
+    length_of_names = []
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            names_of_players.append(x)
+    for y in names_of_players:
+        length_of_names.append((len(y),y))
+    return sorted(length_of_names)[-1]
+                                                                     
+                                                                                                                                 
+def long_name_steals_a_ton():
+    names_of_players = []
+    for i in game_dictionary:
+        for x in game_dictionary[i]['players']:
+            names_of_players.append((game_dictionary[i]['players'][x]['steals'],x))
+    return player_with_longest_name()[1] == sorted(names_of_players)[-1][1]                                                                     
+                                                                     
+                                                                     
+
+
+
+
+
+        
+
+
